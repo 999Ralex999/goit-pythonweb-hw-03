@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+  <h1>All messages</h1>
+
+  {% if messages %}
+    <div class="row">
+      {% for timestamp, entry in messages.items() %}
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <strong>{{ entry.username }}</strong> at {{ timestamp }}
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ entry.message }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No messages yet.</p>
+  {% endif %}
+{% endblock %}
